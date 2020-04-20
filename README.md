@@ -74,11 +74,13 @@ Catalog of Wasm runtimes together with the corresponding tests and benchmarks. T
 ### Metering
 
 Currently there are three implementations of the metering:
-1. [pwasm-utils by Parity](https://crates.io/crates/pwasm-utils), which is a code transformation tool that injects metering code into a Wasm file;
-2. Wasmer runtime is able to perform gas metering by injecting low-level metering code upon Wasm compilation;
-3. [wasm-metering by Ewasm](https://github.com/ewasm/wasm-metering),  
+* [pwasm-utils by Parity](https://crates.io/crates/pwasm-utils), which is a code transformation tool that injects metering code into a Wasm file;
+* Wasmer runtime is able to perform gas metering by injecting low-level metering code upon Wasm compilation;
+* [wasm-metering by Ewasm](https://github.com/ewasm/wasm-metering) -- currently orphaned, gas metering injection.
 
 Additionaly Wasmi has its own version with embedded metering functionality, see <a href="https://lib.rs/crates/metered_wasmi">metered_wasmi</a>.
+
+Both pwasm-utils by Parity and wasm-metering by Ewasm are code transformation tools that can be combined with any Wasm runtime, e.g. someone can inject gas metering into the code before passing it to a runtime for execution.
 
 ## OS Support
 
@@ -108,7 +110,7 @@ Additionaly Wasmi has its own version with embedded metering functionality, see 
     <td>:white_check_mark:</td>
   </tr>
   <tr>
-    <td>Mac OSX</td>
+    <td>MacOS</td>
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
@@ -127,8 +129,68 @@ Additionaly Wasmi has its own version with embedded metering functionality, see 
   </tr>
 </table>
 
-----
+## Testing
+
+<table>
+  <tr>
+    <th>Runtime</th>
+    <th colspan="3">Wasmer</th>
+    <th colspan="2">Wasmtime</th>
+    <th> Wasmi </th>
+  </tr>
+  <tr>
+    <td><b>Backend</b></td>
+    <td><b>Singlepass</b></td>
+    <td><b>Cranelift</b></td>
+    <td><b>LLVM</b></td>
+    <td><b>Cranelift</b></td>
+    <td><b>Lightbeam</b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Spec tests</td>
+    <td>:white_check_mark:<sup><a href="#wasmer-spectests">2</a></sup></td>
+    <td>:white_check_mark:<sup><a href="#wasmer-spectests">2</a></sup></td>
+    <td>:white_check_mark:<sup><a href="#wasmer-spectests">2</a></sup></td>
+    <td>:question:</td>
+    <td>:question:</td>
+    <td>:question:</td>
+  </tr>
+  <tr>
+    <td>cargo-fuzz (libfuzzer)</td>
+    <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
+    <td>:x:</td>
+    <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
+    <td>:question:</td>
+    <td>:question:</td>
+    <td>:white_check_mark:<sup><a href="#wasmi">4</a></sup></td>
+  </tr>
+  <tr>
+    <td>honggfuzz</td>
+    <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
+    <td>:x:</td>
+    <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
+    <td>:question:</td>
+    <td>:question:</td>
+    <td>:white_check_mark:<sup><a href="#wasmi">4</a></sup></td>
+  </tr>
+  <tr>
+    <td>aflfuzz</td>
+    <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
+    <td>:x:</td>
+    <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
+    <td>:question:</td>
+    <td>:question:</td>
+    <td>:x:</td>
+  </tr>
+</table>
+
+### Spec tests
+Both Wasmer and Wasmi use official test suite to verify compatibility with the Wasm spec.
 
 ## Footnotes
-
-<a name="wasmer-features">1</a>: [Wasmer support of features by backend](https://docs.wasmer.io/ecosystem/wasmer/wasmer-features#support-of-features-by-backend)
+<p><a name="wasmer-features" href="https://docs.wasmer.io/ecosystem/wasmer/wasmer-features#support-of-features-by-backend">1: Wasmer support of features by backend</a></p>
+<p><a name="wasmer-spectests" href="https://github.com/wasmerio/wasmer/tree/master/tests/spectests">2: Wasmer spec tests</a></p>
+<p><a name="wasmer-fuzz" href="https://github.com/wasmerio/wasm-fuzz">3: Wasmer fuzz tests</a></p>
+<p><a name="wasmi" href="https://github.com/paritytech/wasmi">4: Wasmi homepage</a></p>
+<p><a name="wasm-testsuite" href="https://github.com/WebAssembly/testsuite">5: Wasm official test suite</a></p>
