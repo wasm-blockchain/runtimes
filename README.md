@@ -185,6 +185,9 @@ Both pwasm-utils by Parity and wasm-metering by Ewasm are code transformation to
   </tr>
 </table>
 
+Note, additionally to fuzz tests provided by Wasmer [Trail of Bits](https://www.trailofbits.com/) performed volatility study of Wasmer and have created afl test that you can find in [wasmer-afl](https://github.com/wasm-blockchain/runtimes/blob/master/wasmer-afl) directory.
+
+
 ### Spec tests
 Both Wasmer and Wasmi use official test suite to verify compatibility with the Wasm spec.
 

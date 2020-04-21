@@ -1,0 +1,28 @@
+[package]
+name = "rust_embedder_app-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[dependencies.rust_embedder_app]
+path = ".."
+
+[dependencies]
+afl = "0.5.1"
+lazy_static = "1.4.0"
+wasmer-runtime-core = "0.7.0"
+wasmer-runtime = { version = "0.7.0", features = [ "cranelift", "singlepass" ]}
+
+# # Prevent this from interfering with workspaces
+# [workspace]
+# members = ["."]
+
+[features]
+no_macro = []
+cranelift =[]
+singlepass = []
+
+[[bin]]
+name = "fuzz_wasmer"
+path = "fuzz_targets/fuzz_wasmer.rs"
