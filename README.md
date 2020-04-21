@@ -33,7 +33,7 @@ Catalog of Wasm runtimes together with the corresponding tests and benchmarks. T
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
-    <td>:question:</td>
+    <td>:white_check_mark:</td>
     <td>:question:</td>
     <td>:x:</td>
   </tr>
@@ -42,7 +42,7 @@ Catalog of Wasm runtimes together with the corresponding tests and benchmarks. T
     <td>:white_check_mark:</td>
     <td>:x:</td>
     <td>:white_check_mark:</td>
-    <td>:x:</td>
+    <td>:repeat:<sup><a href="#wasmtime-metering">6</a></sup></td>
     <td>:x:</td>
     <td>:white_check_mark:<a href="https://lib.rs/crates/metered_wasmi">metered_wasmi</a></td>
   </tr>
@@ -51,7 +51,7 @@ Catalog of Wasm runtimes together with the corresponding tests and benchmarks. T
     <td>:x:</td>
     <td>:x:</td>
     <td>:white_check_mark:</td>
-    <td>:question:</td>
+    <td>:repeat:</td>
     <td>:question:</td>
     <td>:x:</td>
   </tr>
@@ -60,7 +60,7 @@ Catalog of Wasm runtimes together with the corresponding tests and benchmarks. T
     <td>:repeat:</td>
     <td>:repeat:</td>
     <td>:repeat:</td>
-    <td>:question:</td>
+    <td>:white_check_mark:</td>
     <td>:question:</td>
     <td>:question:</td>
   </tr>
@@ -105,7 +105,7 @@ Both pwasm-utils by Parity and wasm-metering by Ewasm are code transformation to
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
-    <td>:question:</td>
+    <td>:white_check_mark:</td>
     <td>:question:</td>
     <td>:white_check_mark:</td>
   </tr>
@@ -114,7 +114,7 @@ Both pwasm-utils by Parity and wasm-metering by Ewasm are code transformation to
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
-    <td>:question:</td>
+    <td>:white_check_mark:</td>
     <td>:question:</td>
     <td>:white_check_mark:</td>
   </tr>
@@ -123,7 +123,7 @@ Both pwasm-utils by Parity and wasm-metering by Ewasm are code transformation to
     <td>:white_check_mark:</td>
     <td>:white_check_mark:</td>
     <td>:x:<a href="https://github.com/wasmerio/wasmer/issues/347">#347</a></td>
-    <td>:question:</td>
+    <td>:white_check_mark:</td>
     <td>:question:</td>
     <td>:question:</td>
   </tr>
@@ -152,7 +152,7 @@ Both pwasm-utils by Parity and wasm-metering by Ewasm are code transformation to
     <td>:white_check_mark:<sup><a href="#wasmer-spectests">2</a></sup></td>
     <td>:white_check_mark:<sup><a href="#wasmer-spectests">2</a></sup></td>
     <td>:white_check_mark:<sup><a href="#wasmer-spectests">2</a></sup></td>
-    <td>:question:</td>
+    <td>:white_check_mark:</td>
     <td>:question:</td>
     <td>:question:</td>
   </tr>
@@ -161,7 +161,7 @@ Both pwasm-utils by Parity and wasm-metering by Ewasm are code transformation to
     <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
     <td>:x:</td>
     <td>:white_check_mark:<sup><a href="#wasmer-fuzz">3</a></sup></td>
-    <td>:question:</td>
+    <td>:white_check_mark:</td>
     <td>:question:</td>
     <td>:white_check_mark:<sup><a href="#wasmi">4</a></sup></td>
   </tr>
@@ -191,9 +191,16 @@ Note, additionally to fuzz tests provided by Wasmer [Trail of Bits](https://www.
 ### Spec tests
 Both Wasmer and Wasmi use official test suite to verify compatibility with the Wasm spec.
 
+### Additional properties
+Additionaly Wasmtime+Cranelift supports the following, according to [@tschneidereit](https://github.com/tschneidereit/):
+* Debugging in gdb/lldb
+* Openly governed
+* License gives a patent grant
+
 ## Footnotes
 <p><a name="wasmer-features" href="https://docs.wasmer.io/ecosystem/wasmer/wasmer-features#support-of-features-by-backend">1: Wasmer support of features by backend</a></p>
 <p><a name="wasmer-spectests" href="https://github.com/wasmerio/wasmer/tree/master/tests/spectests">2: Wasmer spec tests</a></p>
 <p><a name="wasmer-fuzz" href="https://github.com/wasmerio/wasm-fuzz">3: Wasmer fuzz tests</a></p>
 <p><a name="wasmi" href="https://github.com/paritytech/wasmi">4: Wasmi homepage</a></p>
 <p><a name="wasm-testsuite" href="https://github.com/WebAssembly/testsuite">5: Wasm official test suite</a></p>
+<p><a name="wasmtime-metering">6: There are rumors of metering projects for Cranelift/Wasmtime. They might not be public, according to <a href="https://github.com/tschneidereit/">@tschneidereit</a></a></p>
